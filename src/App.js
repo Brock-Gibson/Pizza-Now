@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from "axios";
 import Map from "./Map";
+import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -55,8 +56,8 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div>
-          <h1>Pizza Now</h1>
+        <div className="container">
+          <h1 className="text-center">Pizza Now</h1>
           <h2>Your one stop shop for finding pizza near you</h2>
 
           <h4>Enter your zip code below to find pizza now</h4>
