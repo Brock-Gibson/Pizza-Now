@@ -56,19 +56,27 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container">
+        <div id="background" className="container, text-center">
           <h1 className="text-center">Pizza Now</h1>
           <h2>Your one stop shop for finding pizza near you</h2>
 
           <h4>Enter your zip code below to find pizza now</h4>
+          <div id="inputField" className="input-group mb-3">
           <input
             placeholder="Zip Code"
             type="number"
             value={this.state.zipCode}
             onChange={evt => this.updateZipCode(evt)}
           />
-          <br />
-          <button onClick={() => this.findPizza()}>Find Pizza Now</button>
+          <div className="input-group-append">
+            <button 
+              type="button" 
+              className="btn btn-warning" 
+              onClick={() => this.findPizza()}>
+                <img src="../pizzapic.png" width="19" alt="Fine Pizza Now!"/>
+            </button>
+          </div>
+          </div>
         </div>
         <br />
         <br />
