@@ -5,8 +5,8 @@ import Map from "./Map";
 import "./App.css";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       zipCode: "",
       data: []
@@ -15,56 +15,34 @@ class App extends React.Component {
     this.updateZipCode = this.updateZipCode.bind(this);
   }
 
-  componentDidUpdate() {
-    console.log(this.state.data);
-  }
+  handleOnClick = zipCode => {
+    // get data for all user choices (checkout axios or isomorphic-fetch)
 
-  findPizza() {
-    console.log(this.state.zipCode + " is the zip code");
-    // fire request off
+    // start the fetching process (the CatTable will now display "Loading...")
+    this.setState({
+      fetching: true
+    });
 
-    if (this.state.zipCode.length === 5) {
-      if (
-        parseInt(this.state.zipCode) > 0 &&
-        parseInt(this.state.zipCode) <= 99999
-      ) {
-        axios
-          .get(
-            "https://xqgy0d8a3l.execute-api.us-east-1.amazonaws.com/Prod/places/" +
-              this.state.zipCode,
-            { crossdomain: true }
-          )
-          .then(function(response) {
-            console.log(
-              "response is : " + JSON.stringify(response.data.results)
-            );
-            var parsedData = response.data.results;
-            let pizzaPlaces = parsedData.map(place => {
-              console.log(place);
-              return (
-                <div key={place.place_id}>
-                  <p>{place.name}</p>
-                  <p>{place.formatted_address}</p>
-                </div>
-              );
+    const url =
+      "https://xqgy0d8a3l.execute-api.us-east-1.amazonaws.com/Prod/places/" +
+      zipCode;
+
+    if (zipCode.length === 5) {
+      if (parseInt(zipCode) > 0 && parseInt(zipCode) <= 99999) {
+        axios(url)
+          .then(response => {
+            console.log(response.data.results);
+            let data = response.data.results;
+            this.setState({
+              haveData: true,
+              fetching: false,
+              data
             });
-            this.setState({ data: pizzaPlaces });
           })
-          .catch(function(error) {
-            if (error.response) {
-              console.log(error.response.headers);
-            } else if (error.request) {
-              console.log(error.request);
-            } else {
-              console.log(error.message);
-            }
-            console.log(error.config);
-          });
+          .catch(err => console.warn("Error:", err));
       }
-    } else {
-      console.log("invalid zip code");
     }
-  }
+  };
 
   updateZipCode(evt) {
     this.setState({
@@ -72,7 +50,16 @@ class App extends React.Component {
     });
   }
 
+  handleReset = () => {
+    // since our views are dependent on `haveData` and `fetching`, we can just set those to false
+    this.setState({
+      fetching: false,
+      haveData: false
+    });
+  };
+
   render() {
+    const { haveData, fetching, data } = this.state;
     return (
       <React.Fragment>
         <div className="container">
@@ -87,12 +74,24 @@ class App extends React.Component {
             onChange={evt => this.updateZipCode(evt)}
           />
           <br />
-          <button onClick={() => this.findPizza()}>Find Pizza Now</button>
+          <br />
+          <button onClick={() => this.handleOnClick(this.state.zipCode)}>
+            Pizza Now
+          </button>
+          <ul>
+            {data.map(place => (
+              <React.Fragment key={place.place_id}>
+                <h4>{place.name}</h4>
+                <p>{place.formatted_address}</p>
+                <p>
+                  Rating: <strong>{place.rating} / 5</strong>
+                </p>
+              </React.Fragment>
+            ))}
+          </ul>
         </div>
         <br />
         <br />
-        <div>{this.state.data}</div>
-        <Map />
       </React.Fragment>
     );
   }
