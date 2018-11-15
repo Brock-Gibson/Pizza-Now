@@ -8,11 +8,17 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      zipCode: ""
+      zipCode: "",
+      data: []
     };
 
     this.updateZipCode = this.updateZipCode.bind(this);
   }
+
+  componentDidUpdate() {
+    console.log(this.state.data);
+  }
+
   findPizza() {
     console.log(this.state.zipCode + " is the zip code");
     // fire request off
@@ -29,7 +35,20 @@ class App extends React.Component {
             { crossdomain: true }
           )
           .then(function(response) {
-            console.log("response is : " + response.data);
+            console.log(
+              "response is : " + JSON.stringify(response.data.results)
+            );
+            var parsedData = response.data.results;
+            let pizzaPlaces = parsedData.map(place => {
+              console.log(place);
+              return (
+                <div key={place.place_id}>
+                  <p>{place.name}</p>
+                  <p>{place.formatted_address}</p>
+                </div>
+              );
+            });
+            this.setState({ data: pizzaPlaces });
           })
           .catch(function(error) {
             if (error.response) {
@@ -72,6 +91,7 @@ class App extends React.Component {
         </div>
         <br />
         <br />
+        <div>{this.state.data}</div>
         <Map />
       </React.Fragment>
     );
