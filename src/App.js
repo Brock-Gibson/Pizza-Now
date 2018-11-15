@@ -16,9 +16,6 @@ class App extends React.Component {
   }
 
   handleOnClick = zipCode => {
-    // get data for all user choices (checkout axios or isomorphic-fetch)
-
-    // start the fetching process (the CatTable will now display "Loading...")
     this.setState({
       fetching: true
     });
@@ -51,7 +48,6 @@ class App extends React.Component {
   }
 
   handleReset = () => {
-    // since our views are dependent on `haveData` and `fetching`, we can just set those to false
     this.setState({
       fetching: false,
       haveData: false
@@ -78,6 +74,7 @@ class App extends React.Component {
           <button onClick={() => this.handleOnClick(this.state.zipCode)}>
             Pizza Now
           </button>
+          {fetching ? <p>Loading...</p> : null}
           <ul>
             {data.map(place => (
               <React.Fragment key={place.place_id}>
@@ -86,6 +83,7 @@ class App extends React.Component {
                 <p>
                   Rating: <strong>{place.rating} / 5</strong>
                 </p>
+                <hr />
               </React.Fragment>
             ))}
           </ul>
