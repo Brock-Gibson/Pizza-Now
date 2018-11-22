@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from "axios";
 import Map from "./Map";
 import "./App.css";
+import Header from "./Header.jsx";
 
 class App extends React.Component {
   constructor() {
@@ -58,6 +59,7 @@ class App extends React.Component {
     const { haveData, fetching, data } = this.state;
     return (
       <React.Fragment>
+        <React.Fragment><Header/></React.Fragment>
         <div className="container">
           <h1 className="text-center">Pizza Now</h1>
           <h2>Your one stop shop for finding pizza near you</h2>

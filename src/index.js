@@ -4,6 +4,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from 'reactstrap';
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
