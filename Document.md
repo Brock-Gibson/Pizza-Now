@@ -1,6 +1,6 @@
-# Hack Week Project Docoument
+# Hack Week Project Document
 
-### Our Pizza App to bring you the pizza places closest to you
+## Our Pizza App to bring you the pizza places closest to you
 
 ### Intro
 
@@ -19,7 +19,7 @@ We made a basic app with create-react-app, using a custom google map API backend
 
 ### The Problem
 
-Let's face it. You want pizza. and most importantly, you want your pizza now. This app allows you to find the pizza closest to you, and give you all the info of the pizza places that you'd need to get your pizza.
+Let's face it. You want pizza, and most importantly, you want your pizza now. This app allows you to find the pizza closest to you, and give you all the info of the pizza places that you'd need to get your pizza.
 
 ### The Solution
 
