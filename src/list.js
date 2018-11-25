@@ -58,7 +58,6 @@ class App extends Component {
     }
     return (
       <Container>
-      <Header/>
         <h1>Here is a list of results</h1>
         <ListGroup>{this.state.list}</ListGroup>
       </Container>

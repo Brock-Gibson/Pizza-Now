@@ -58,7 +58,6 @@ class Details extends Component {
     // }
     return (
       <Container>
-      <Header/>
         <Link to="/"> Link back to enter another zip</Link>
         <br />
         <h1>{this.state.name}</h1>

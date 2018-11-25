@@ -16,7 +16,6 @@ console.log()
 
     return (
         <form>
-        <Header/>
           <h3>Enter your Zip Code below to find Pizza Now!</h3>
           <div
             id="inputField"
