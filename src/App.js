@@ -1,96 +1,61 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import axios from "axios";
-import Map from "./Map";
-import "./App.css";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Zip from "./zip"
+import List from "./list"
+import Details from "./details"
+import './App.css';
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      zipCode: "",
-      data: []
-    };
-
-    this.updateZipCode = this.updateZipCode.bind(this);
-  }
-
-  handleOnClick = zipCode => {
+class App extends Component {
+  state = {
+    fields: {
+    },
+  };
+  onChange = updatedValue => {
     this.setState({
-      fetching: true
-    });
-
-    const url =
-      "https://xqgy0d8a3l.execute-api.us-east-1.amazonaws.com/Prod/places/" +
-      zipCode;
-
-    if (zipCode.length === 5) {
-      if (parseInt(zipCode) > 0 && parseInt(zipCode) <= 99999) {
-        axios(url)
-          .then(response => {
-            console.log(response.data.results);
-            let data = response.data.results;
-            this.setState({
-              haveData: true,
-              fetching: false,
-              data
-            });
-          })
-          .catch(err => console.warn("Error:", err));
+      fields: {
+        ...this.state.fields,
+        ...updatedValue
       }
-    }
-  };
-
-  updateZipCode(evt) {
-    this.setState({
-      zipCode: evt.target.value
-    });
-  }
-
-  handleReset = () => {
-    this.setState({
-      fetching: false,
-      haveData: false
     });
   };
-
+  onClick = updatedValue => {
+    console.log(updatedValue)
+    this.setState({
+      fields: {
+        ...this.state.fields,
+        ...updatedValue
+      }
+    });
+  };
   render() {
-    const { haveData, fetching, data } = this.state;
+    const zipWp = () => {
+      return (
+        <Zip onChange={this.onChange} />
+      )
+    }
+    const listWp = () => {
+      return (
+        <List zip={this.state.fields.zip} onClick={this.onClick} />
+      )
+    }
+    const detailsWp = () => {
+      return (
+        <Details onClick={this.onClick} zip={this.state.fields.zip} place_id={this.state.fields.place_id} />
+      )
+    }
     return (
-      <React.Fragment>
-        <div className="container">
-          <h1 className="text-center">Pizza Now</h1>
-          <h2>Your one stop shop for finding pizza near you</h2>
-
-          <h4>Enter your zip code below to find pizza now</h4>
-          <input
-            placeholder="Zip Code"
-            type="number"
-            value={this.state.zipCode}
-            onChange={evt => this.updateZipCode(evt)}
-          />
-          <br />
-          <br />
-          <button onClick={() => this.handleOnClick(this.state.zipCode)}>
-            Pizza Now
-          </button>
-          {fetching ? <p>Loading...</p> : null}
-          <ul>
-            {data.map(place => (
-              <React.Fragment key={place.place_id}>
-                <h4>{place.name}</h4>
-                <p>{place.formatted_address}</p>
-                <p>
-                  Rating: <strong>{place.rating} / 5</strong>
-                </p>
-                <hr />
-              </React.Fragment>
-            ))}
-          </ul>
-        </div>
-        <br />
-        <br />
-      </React.Fragment>
+      <Router className="App">
+        <Switch>
+          <Route path="/" exact render={zipWp} />
+          <Route path="/list" exact render={listWp} />
+          <Route path="/details" exact render={detailsWp} />
+          <div>
+            <p>
+              {JSON.stringify(this.state.fields, null, 2)}
+            </p>
+          </div>
+        </Switch>
+      </Router>
     );
   }
 }
