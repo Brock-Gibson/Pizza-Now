@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
+import { ListGroup, ListGroupItem ,Container} from "reactstrap";
+
 import "./App.css";
 
 class App extends Component {
@@ -27,7 +29,7 @@ class App extends Component {
         console.log(data.results);
         let list = data.results.map((item, i) => {
           return (
-            <div key={i}>
+            <ListGroupItem key={i}>
               <Link
                 to="/details"
                 onClick={this.click}
@@ -43,9 +45,7 @@ class App extends Component {
               <p>
                 Open/Closed: {item.opening_hours.open_now ? "open" : "closed"}
               </p>
-
-              <br />
-            </div>
+            </ListGroupItem>
           );
         });
         this.setState({ list: list });
@@ -56,10 +56,10 @@ class App extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div>
+      <Container>
         <h1>Here is a list of results</h1>
-        {this.state.list}
-      </div>
+        <ListGroup>{this.state.list}</ListGroup>
+      </Container>
     );
   }
 }
