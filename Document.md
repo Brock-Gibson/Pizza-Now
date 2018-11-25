@@ -73,3 +73,7 @@ Something that'd be very challenging is to implement an actual map with pins of 
 We would also have some better navigation and a great functional navbar, but ran out of time and didn't have alot of different features for the navbar items (Contact Us, About Us, Info Tab)
 
 URL: https://hackillinois2018-65d9f.firebaseapp.com/
+
+FRONTEND GIT: https://github.com/Brockerboy/Pizza-Now
+
+BACKEND GIT: https://github.com/jordan329/hackweek
