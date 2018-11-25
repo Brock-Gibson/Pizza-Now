@@ -50,7 +50,7 @@ How we used them:
 
 ### Who did what?
 
-- Brock Gibson: Most of the front end functionality (Firing off the request, filling the list, basic page layout)
+- Brock Gibson: Most of the front end functionality (Firing off the request, filling the list, basic page layout, also typed this document)
 - Jordan Liebman: Most of the backend (handling the request and setting up the proper json reponse)
 - Adam Oakes: Navigation through the pages using react router
 - Ali Shahmoradi: Boostrap Master (styling and making everything look pretty. Everyone loves a good looking and functional application)
