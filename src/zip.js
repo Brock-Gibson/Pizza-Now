@@ -14,12 +14,13 @@ console.log()
   render() {
 
     return (
+      <div className="container">
         <form>
-          <h3>Enter your Zip Code below to find Pizza Now!</h3>
+          <h1>Enter Zip</h1>
           <div
             id="inputField"
-            className="input-group mb-3">
-            <input name="zip" placeholder="Zip Code" onChange={this.change}></input>
+            className="input-group lg">
+            <input aria-label="Large" aria-describedby="inputGroup-sizing-sm" className="form-control" name="zip" placeholder="Zip Code" onChange={this.change}></input>
             <br />
             <div className="input-group-append">
               <Link to="/list">
@@ -32,6 +33,7 @@ console.log()
             </div>
           </div>
         </form>
+      </div>
     );
   }
 }
