@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import {Container} from "reactstrap";
 
-import './App.css';
+import "./App.css";
 
 class Zip extends Component {
   change = e => {
     var num = e.target.value.replace(/-*\D/gi, "");
 
-    var num2 = num.replace(/\d{5}(?=(?:\d{1})+$)/gm, '$&-');
-console.log()
+    var num2 = num.replace(/\d{5}(?=(?:\d{1})+$)/gm, "$&-");
+    console.log();
     this.props.onChange({ [e.target.name]: num2 });
   };
   render() {
-
     return (
       <div className="container">
         <form>
@@ -24,9 +24,7 @@ console.log()
             <br />
             <div className="input-group-append">
               <Link to="/list">
-                <button
-                  type="button"
-                  className="btn btn-warning">
+                <button type="button" className="btn btn-warning">
                   <img src="../pizzapic.png" width="19" alt="Find Pizza!" />
                 </button>
               </Link>

@@ -4,6 +4,8 @@ import Zip from "./zip"
 import List from "./list"
 import Details from "./details"
 import './App.css';
+import Header from './Header.jsx';              
+
 
 class App extends Component {
   state = {
@@ -44,22 +46,25 @@ class App extends Component {
       )
     }
     return (
-      <div id="background" className="container, text-center">
-      <h1 className="text-center">Pizza Now</h1>
-      <h2>Your one stop shop for finding pizza near you</h2>
-      <Router className="App">
-        <Switch>
-          <Route path="/" exact render={zipWp} />
-          <Route path="/list" exact render={listWp} />
-          <Route path="/details" exact render={detailsWp} />
-          <div>
-            <p>
-              {JSON.stringify(this.state.fields, null, 2)}
-            </p>
-          </div>
-        </Switch>
-      </Router>
-      </div>
+      <React.Fragment>
+      <Header/>
+        <div id="background" className="container, text-center">
+        <h1 className="text-center">Pizza Now</h1>
+        <h2>Your one stop shop for finding pizza near you</h2>
+        <Router className="App">
+          <Switch>
+            <Route path="/" exact render={zipWp} />
+            <Route path="/list" exact render={listWp} />
+            <Route path="/details" exact render={detailsWp} />
+            <div>
+              <p>
+                {JSON.stringify(this.state.fields, null, 2)}
+              </p>
+            </div>
+          </Switch>
+        </Router>
+        </div>
+      </React.Fragment>
     );
   }
 }
