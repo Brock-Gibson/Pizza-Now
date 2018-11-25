@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './App.css';
 
@@ -8,7 +8,7 @@ class Zip extends Component {
     var num = e.target.value.replace(/-*\D/gi, "");
 
     var num2 = num.replace(/\d{5}(?=(?:\d{1})+$)/gm, '$&-');
-
+console.log()
     this.props.onChange({ [e.target.name]: num2 });
   };
   render() {
@@ -17,11 +17,21 @@ class Zip extends Component {
       <div>
         <form>
           <h1>Enter Zip</h1>
-          <input name="zip" onChange={this.change}></input>
-          <br />
-          <Link to="/list">
-            <button>List</button>
-          </Link>
+          <div
+            id="inputField"
+            className="input-group mb-3">
+            <input name="zip" placeholder="Zip Code" onChange={this.change}></input>
+            <br />
+            <div className="input-group-append">
+              <Link to="/list">
+                <button
+                  type="button"
+                  className="btn btn-warning">
+                  <img src="../pizzapic.png" width="19" alt="Find Pizza!" />
+                </button>
+              </Link>
+            </div>
+          </div>
         </form>
       </div>
     );
