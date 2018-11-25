@@ -14,9 +14,8 @@ console.log()
   render() {
 
     return (
-      <div>
         <form>
-          <h1>Enter Zip</h1>
+          <h3>Enter your Zip Code below to find Pizza Now!</h3>
           <div
             id="inputField"
             className="input-group mb-3">
@@ -33,7 +32,6 @@ console.log()
             </div>
           </div>
         </form>
-      </div>
     );
   }
 }

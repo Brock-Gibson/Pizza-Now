@@ -44,6 +44,9 @@ class App extends Component {
       )
     }
     return (
+      <div id="background" className="container, text-center">
+      <h1 className="text-center">Pizza Now</h1>
+      <h2>Your one stop shop for finding pizza near you</h2>
       <Router className="App">
         <Switch>
           <Route path="/" exact render={zipWp} />
@@ -56,6 +59,7 @@ class App extends Component {
           </div>
         </Switch>
       </Router>
+      </div>
     );
   }
 }
