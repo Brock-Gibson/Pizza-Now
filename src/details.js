@@ -56,7 +56,7 @@ class Details extends Component {
     // }
     return (
       <div>
-        <Link to="/"> This page shows details</Link>
+        <Link to="/"> Link back to enter another zip</Link>
         <br />
         <h1>{this.state.name}</h1>
         <a href={this.state.website}>{this.state.website}</a>
