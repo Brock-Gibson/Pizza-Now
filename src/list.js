@@ -24,9 +24,10 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
+        console.log(data.results);
         let list = data.results.map((item, i) => {
           return (
-            <div>
+            <div key={i}>
               <Link
                 to="/details"
                 onClick={this.click}
@@ -35,12 +36,19 @@ class App extends Component {
               >
                 {item.name}
               </Link>
+              <p>
+                Rating: <strong>{item.rating} / 5</strong>
+              </p>
+              <p>Price: {item.price_level}</p>
+              <p>
+                Open/Closed: {item.opening_hours.open_now ? "open" : "closed"}
+              </p>
+
               <br />
             </div>
           );
         });
         this.setState({ list: list });
-        console.log("state", this.state.list);
       });
   }
   render() {
