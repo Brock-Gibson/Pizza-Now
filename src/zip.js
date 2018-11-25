@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
 import './App.css';
+import Header from "./Header.jsx"
 
 class Zip extends Component {
   change = e => {
@@ -15,6 +16,7 @@ console.log()
 
     return (
         <form>
+        <Header/>
           <h3>Enter your Zip Code below to find Pizza Now!</h3>
           <div
             id="inputField"

@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { ListGroup, ListGroupItem ,Container} from "reactstrap";
 
 import "./App.css";
+import Header from "./Header.jsx"
 
 class App extends Component {
   constructor() {
@@ -57,6 +58,7 @@ class App extends Component {
     }
     return (
       <Container>
+      <Header/>
         <h1>Here is a list of results</h1>
         <ListGroup>{this.state.list}</ListGroup>
       </Container>
