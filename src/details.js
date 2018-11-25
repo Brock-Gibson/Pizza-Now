@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { ListGroup, ListGroupItem ,Container} from "reactstrap";
 import "./App.css";
+import Header from "./Header.jsx"
 
 class Details extends Component {
   constructor() {
