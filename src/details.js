@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
+import { ListGroup, ListGroupItem ,Container} from "reactstrap";
 import "./App.css";
 
 class Details extends Component {
@@ -55,7 +56,7 @@ class Details extends Component {
     //    });
     // }
     return (
-      <div>
+      <Container>
         <Link to="/"> Link back to enter another zip</Link>
         <br />
         <h1>{this.state.name}</h1>
@@ -65,7 +66,7 @@ class Details extends Component {
         <p>Open/Closed:{this.state.open}</p>
         <h5>HOURS</h5>
         {this.state.hours}
-      </div>
+      </Container>
     );
   }
 }
