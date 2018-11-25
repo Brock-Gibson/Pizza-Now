@@ -55,6 +55,18 @@ class App extends React.Component {
     });
   };
 
+  componentDidMount() {
+   if (navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(this.displayLocationInfo);
+   }
+ }
+
+  displayLocationInfo(position) {
+    const lng = position.coords.longitude;
+    const lat = position.coords.latitude;
+    console.log(`longitude: ${ lng } | latitude: ${ lat }`);
+  }
+
   render() {
     const { haveData, fetching, data } = this.state;
     return (
