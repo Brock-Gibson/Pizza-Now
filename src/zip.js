@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {Container} from "reactstrap";
+import Locator from './Locator.jsx';
+
 
 import "./App.css";
 
@@ -20,6 +22,7 @@ class Zip extends Component {
           <div
             id="inputField"
             className="input-group lg">
+            <Locator/>
             <input aria-label="Large" aria-describedby="inputGroup-sizing-sm" className="form-control" name="zip" placeholder="Zip Code" onChange={this.change}></input>
             <br />
             <div className="input-group-append">
