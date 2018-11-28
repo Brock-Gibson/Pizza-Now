@@ -38,7 +38,7 @@ export default class Header extends React.Component {
                 <NavLink href="/">About</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Something Else</NavLink>
+                <NavLink href="/">Help</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -46,14 +46,10 @@ export default class Header extends React.Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Option 1
+                    Contact
                   </DropdownItem>
                   <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
+                    Donate
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
