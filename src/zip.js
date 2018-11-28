@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {Container} from "reactstrap";
-import Locator from './Locator.jsx';
-
 
 import "./App.css";
 
@@ -14,6 +12,41 @@ class Zip extends Component {
     console.log();
     this.props.onChange({ [e.target.name]: num2 });
   };
+
+  constructor() {
+    super();
+    this.getZip = this.getZip.bind(this);
+    this.state = {
+      zip: ""
+    };
+  }
+
+  componentDidMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.getZip);
+    }
+  }
+
+  getZip(position) {
+    const lng = position.coords.longitude;
+    const lat = position.coords.latitude;
+
+    const url =
+      "http://www.adamoakes.xyz/pizzaNow/coordsToZipAPI.php?latlng=" +
+      lat + ',' + lng;
+
+    const that = this;
+    fetch(url)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(myJson => {
+        let zipStr = JSON.stringify(myJson)
+        console.log(zipStr);
+        this.setState({ zip: zipStr });
+      });
+  }
+
   render() {
     return (
       <div className="container">
@@ -22,8 +55,7 @@ class Zip extends Component {
           <div
             id="inputField"
             className="input-group lg">
-            <Locator/>
-            <input aria-label="Large" aria-describedby="inputGroup-sizing-sm" className="form-control" name="zip" placeholder="Zip Code" onChange={this.change}></input>
+            <input aria-label="Large" aria-describedby="inputGroup-sizing-sm" className="form-control" name="zip" placeholder="Zip Code" placeholder={this.state.zip} onChange={this.change}></input>
             <br />
             <div className="input-group-append">
               <Link to="/list">

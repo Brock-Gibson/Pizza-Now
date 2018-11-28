@@ -29,7 +29,6 @@ class App extends Component {
       }
     });
   };
-
   render() {
     const zipWp = () => {
       return (
