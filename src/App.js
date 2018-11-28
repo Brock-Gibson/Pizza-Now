@@ -4,7 +4,7 @@ import Zip from "./zip"
 import List from "./list"
 import Details from "./details"
 import './App.css';
-import Header from './Header.jsx';              
+import Header from './Header.jsx';
 
 
 class App extends Component {
