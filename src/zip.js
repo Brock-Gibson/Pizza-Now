@@ -19,9 +19,6 @@ class Zip extends Component {
     this.state = {
       zip: ""
     };
-  }
-
-  componentDidMount() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.getZip);
     }
@@ -55,7 +52,7 @@ class Zip extends Component {
           <div
             id="inputField"
             className="input-group lg">
-            <input aria-label="Large" aria-describedby="inputGroup-sizing-sm" className="form-control" name="zip" placeholder="Zip Code" placeholder={this.state.zip} onChange={this.change}></input>
+            <input aria-label="Large" aria-describedby="inputGroup-sizing-sm" className="form-control" name="zip" placeholder={this.state.zip} onChange={this.change}></input>
             <br />
             <div className="input-group-append">
               <Link to="/list">
