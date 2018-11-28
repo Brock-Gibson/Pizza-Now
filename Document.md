@@ -60,7 +60,7 @@ Php will try to pull zipcode from Google’s response and return it, returning N
 ### Who did what?
 
 - Brock Gibson: Most of the front end functionality (Firing off the request, filling the list, basic page layout, also typed this document)
-- Jordan Liebman: Most of the backend (handling the request and setting up the proper json reponse, and doing the detail page)
+- Jordan Liebman: Most of the backend (handling the request to google and returning a JSON response, for a zip code request, and a place details request) also Deployment to Firebase hosting.
 Adam Oakes: Created the navbar & handled the auto-location detection functionality; react app & php)
 - Ali Shahmoradi: Styling Master (styling and making everything look pretty with boostrap. Everyone loves a good looking and functional application)
 
