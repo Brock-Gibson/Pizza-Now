@@ -41,6 +41,7 @@ class Zip extends Component {
         let zipStr = JSON.stringify(myJson)
         console.log(zipStr);
         this.setState({ zip: zipStr });
+        this.props.onChange({zip: zipStr})
       });
   }
 
