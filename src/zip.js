@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {Container} from "reactstrap";
 
+
 import "./App.css";
 
 class Zip extends Component {
@@ -27,10 +28,11 @@ class Zip extends Component {
   getZip(position) {
     const lng = position.coords.longitude;
     const lat = position.coords.latitude;
+    const key = 'AIzaSyCkxlsEbGDbFpHhgVHRZsDmVutacBpgEUE';
 
     const url =
       "https://maps.googleapis.com/maps/api/geocode/json?latlng=" +
-      lat + ',' + lng + '&key=AIzaSyCkxlsEbGDbFpHhgVHRZsDmVutacBpgEUE';
+      lat + ',' + lng + '&key=' + key;
 
     fetch(url)
       .then(function(response) {
@@ -39,7 +41,7 @@ class Zip extends Component {
       .then(myJson => {
         let formattedAdress = myJson['results'][0]['formatted_address'];
         let addStr = JSON.stringify(formattedAdress);
-        let regX = /[0-9]{5}/
+        let regX = /[0-9]{5}(?!.*[0-9]{5})/
         let zipStr = regX.exec(addStr);
         console.log(zipStr[0]);
         this.setState({ zip: zipStr });
