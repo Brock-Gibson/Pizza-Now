@@ -46,8 +46,14 @@ class Zip extends Component {
             let regX = /[0-9]{5}(?!.*[0-9]{5})/
             let zipStr = regX.exec(addStr);
             console.log(zipStr[0]);
-            this.setState({ zip: zipStr });
-            this.props.onChange({zip: zipStr});
+            if(zipStr){
+              this.setState({ zip: zipStr });
+              this.props.onChange({zip: zipStr});
+            } else {
+              this.setState({ zip: "Enter Zip Code" });
+            }
+          } else {
+            this.setState({ zip: "Enter Zip Code" });
           }
         } else {
           this.setState({ zip: "Enter Zip Code" });
