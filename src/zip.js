@@ -39,13 +39,19 @@ class Zip extends Component {
         return response.json();
       })
       .then(myJson => {
-        let formattedAdress = myJson['results'][0]['formatted_address'];
-        let addStr = JSON.stringify(formattedAdress);
-        let regX = /[0-9]{5}(?!.*[0-9]{5})/
-        let zipStr = regX.exec(addStr);
-        console.log(zipStr[0]);
-        this.setState({ zip: zipStr });
-        this.props.onChange({zip: zipStr});
+        if(myJson['results'][0]) {
+          let formattedAdress = myJson['results'][0]['formatted_address'] ? myJson['results'][0]['formatted_address'] : null;
+          if(formattedAdress){
+            let addStr = JSON.stringify(formattedAdress);
+            let regX = /[0-9]{5}(?!.*[0-9]{5})/
+            let zipStr = regX.exec(addStr);
+            console.log(zipStr[0]);
+            this.setState({ zip: zipStr });
+            this.props.onChange({zip: zipStr});
+          }
+        } else {
+          this.setState({ zip: "Enter Zip Code" });
+        }
       });
   }
 
