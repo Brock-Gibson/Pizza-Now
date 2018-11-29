@@ -45,7 +45,6 @@ class Zip extends Component {
             let addStr = JSON.stringify(formattedAdress);
             let regX = /[0-9]{5}(?!.*[0-9]{5})/
             let zipStr = regX.exec(addStr);
-            console.log(zipStr[0]);
             if(zipStr){
               this.setState({ zip: zipStr });
               this.props.onChange({zip: zipStr});
