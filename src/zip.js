@@ -18,7 +18,7 @@ class Zip extends Component {
     super();
     this.getZip = this.getZip.bind(this);
     this.state = {
-      zip: ""
+      zip: "Enter Zip Code"
     };
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.getZip);
@@ -48,14 +48,8 @@ class Zip extends Component {
             if(zipStr){
               this.setState({ zip: zipStr });
               this.props.onChange({zip: zipStr});
-            } else {
-              this.setState({ zip: "Enter Zip Code" });
             }
-          } else {
-            this.setState({ zip: "Enter Zip Code" });
           }
-        } else {
-          this.setState({ zip: "Enter Zip Code" });
         }
       });
   }
