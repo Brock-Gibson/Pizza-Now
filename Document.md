@@ -36,7 +36,6 @@ Using that and a custom AWS google maps rest API, we enter in the zip code and t
 - Bootstrap
 - AWS Lamba Server
 - C# .NET CORE
-- PHP
 
 ### How we used them:
 
@@ -44,7 +43,7 @@ Using that and a custom AWS google maps rest API, we enter in the zip code and t
 
 - React router was used for navigating between the pages and loading them. The router handled when we enter the zip code and it took us to the new page, and all the SPA navigation.
 
-- Google Maps API was used to retrieve all the data about the pizza places within a certain zip code area, and then return that in a nice JSON reponse to fill our react page.
+- Google Maps API was used to retrieve all the data about the pizza places within a certain zip code area, and then return that in a nice JSON reponse to fill our react page. It was also used to reverse-geolocate the user's coordinates into a zipcode.
 
 - Bootstrap was used for all our styling, and made for a really nice UI
 
@@ -52,16 +51,11 @@ Using that and a custom AWS google maps rest API, we enter in the zip code and t
 
 - The backend is written in .NET C# Core to handle the requests and all the backend logic.
 
-- A simple php script acts as the middleman between the react application and google maps api. Coordinates sent to php script are forwarded to google maps geolocation api. 
-Php will try to pull zipcode from Google’s response and return it, returning Null if failed.
-
-
-
 ### Who did what?
 
 - Brock Gibson: Most of the front end functionality (Firing off the request, filling the list, basic page layout, also typed this document)
 - Jordan Liebman: Most of the backend (handling the request to google and returning a JSON response, for a zip code request, and a place details request) also Deployment to Firebase hosting.
-Adam Oakes: Created the navbar & handled the auto-location detection functionality; react app & php)
+Adam Oakes: Created the navbar & handled the auto-location detection functionality.
 - Ali Shahmoradi: Styling Master (styling and making everything look pretty with boostrap. Everyone loves a good looking and functional application)
 
 ### Tips and Tricks
@@ -83,5 +77,3 @@ URL: https://hackillinois2018-65d9f.firebaseapp.com/
 FRONTEND GIT: https://github.com/Brockerboy/Pizza-Now
 
 BACKEND GIT: https://github.com/jordan329/hackweek
-
-PHP GIT: https://github.com/amot92/coordsToZipAPI

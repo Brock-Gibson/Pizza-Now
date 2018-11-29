@@ -29,19 +29,21 @@ class Zip extends Component {
     const lat = position.coords.latitude;
 
     const url =
-      "http://www.adamoakes.xyz/pizzaNow/coordsToZipAPI.php?latlng=" +
-      lat + ',' + lng;
+      "https://maps.googleapis.com/maps/api/geocode/json?latlng=" +
+      lat + ',' + lng + '&key=AIzaSyCkxlsEbGDbFpHhgVHRZsDmVutacBpgEUE';
 
-    const that = this;
     fetch(url)
       .then(function(response) {
         return response.json();
       })
       .then(myJson => {
-        let zipStr = JSON.stringify(myJson)
-        console.log(zipStr);
+        let formattedAdress = myJson['results'][0]['formatted_address'];
+        let addStr = JSON.stringify(formattedAdress);
+        let regX = /[0-9]{5}/
+        let zipStr = regX.exec(addStr);
+        console.log(zipStr[0]);
         this.setState({ zip: zipStr });
-        this.props.onChange({zip: zipStr})
+        this.props.onChange({zip: zipStr});
       });
   }
 
